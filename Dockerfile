@@ -18,4 +18,4 @@ COPY . /
 
 ENTRYPOINT [ "python3" ]
 
-CMD [ "clientApp.py" ]
+CMD [ "main.py" ]

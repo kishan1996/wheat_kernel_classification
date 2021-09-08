@@ -8,3 +8,5 @@ PyMySQL==0.10.0
 google-cloud-storage
 gcsfs
 Flask-MonitoringDashboard
+gunicorn==20.0.4
+
