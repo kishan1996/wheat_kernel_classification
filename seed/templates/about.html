@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <figure>
+            <img class="rounded-circle" src="{{ url_for('static', filename='images/k.jpg') }}" />
+            <figcaption style="font-size: 24px;">Kunal Duran</figcaption>
+        </figure>
+
+    </div>
+    <div class="col">
+        <figure>
+            <img class="rounded-circle" src="{{ url_for('static', filename='images/c.jpg') }}" />
+            <figcaption style="font-size: 24px;">Chandan Hiremath</figcaption>
+        </figure>
+    </div>
+</div>
+<h2>Group 6B</h2>
+<div class="mt-5">
+    <h1>Challenges</h1>
+    <ul>
+        <li><b><i style="font-size: 20px;">Deployment</i></b> on the google cloud app engine created a problem as the
+            server is read only and the problem was how
+            to save the Dataset files that user is uploading. Understanding the architecture of how cloud platform work
+            was difficult but gradually things started to make sense and with the help of Google and StackOverflow we
+            found
+            a solution(Google cloud Storage). Again we hit with something very new to us and new API and functions, but
+            the
+            <b>GCP</b> Documentation was spot on and we solved our problem by storing files into the Google cloud
+            Buckets
+            and deployed our application on app engine.
+
+        </li>
+    </ul>
+</div>
+<div class="">
+    <h1>Learnings</h1>
+    <ul>
+        <li>Machine Learning Fundamentals and Libraries</li>
+        <li>Concepts like Multicolliniarity, Visualization, PCA, etc</li>
+        <li>Deeper Understanding of Flask Framework</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Bootstrap</li>
+        <li>Docker</li>
+        <li>Google Cloud Platform</li>
+    </ul>
+</div>
+
+{% endblock content %}

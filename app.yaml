@@ -1,0 +1,8 @@
+runtime: python37
+
+
+instance_class: F4
+
+env_variables:
+    GOOGLE_APPLICATION_CREDENTIALS: ineuronInternship_keys.json
+    CLOUD_STORAGE_BUCKET: gs://ineuroninternship.appspot.com

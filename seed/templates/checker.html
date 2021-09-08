@@ -1,0 +1,44 @@
+ <!-- This page is redundant -->
+ 
+ <! Doctype html >
+<html>
+<head>
+	<title>Seed Classifier</title>
+
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+	
+</head>
+<body>
+<style>
+	body{
+		padding:10px;
+		background-color: #fff0f0;
+	}
+</style>
+	<h1>Let's Classify some seeds ;)</h1>
+	
+<form method="POST" enctype="multipart/form-data">
+	     <input class="form-control" style="width:300px; margin:10 5 5 0" type="text" name="url" placeholder="Enter Link">
+	     {% if columns %}
+		     <select id="mlmodels" name="model" style="width:300px; " class="custom-select">
+			{% for col in columns %}
+			<option value="DT">{{ col }}</option>
+			{% endfor %}
+		     </select>
+	     {% endif %}
+	     <button class="btn btn-outline-info" type="submit" href="/">Classify</button>
+</form>
+</body>
+</html>

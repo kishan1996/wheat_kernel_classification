@@ -1,0 +1,402 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    a {
+        color: #ffcefb;
+    }
+
+    /* CSS link color */
+
+    div .container>div {
+        padding: 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: whitesmoke;
+    }
+
+    label {
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <h1>Documentation</h1>
+    <div style="line-height: 2.5em;">
+        <ul>
+            <li><a href="#dinfo">Dataset Info</a></li>
+            <li><a href="#woverall">WorkFlow Overall</a></li>
+            <li><a href="#sbeda">Stats Based EDA</a></li>
+            <li><a href="#gbeda">Graph Based EDA</a></li>
+            <li><a href="#mselection">Model Selection</a></li>
+            <li><a href="#mtoptimization">Model Tuning and Optimization</a></li>
+            <!-- <li><a href="#ppipeline">Prediction Pipeline</a></li> -->
+            <li><a href="#escenarios">Exception Scenarios</a></li>
+            <li><a href="#dstrategy">Deployment Strategy</a></li>
+        </ul>
+    </div>
+    <br>
+    <hr>
+    <div id="dinfo">
+        <h3>Data Set Information:</h3>
+        <p>
+            Understanding the Classification Problem and the Dataset.<br>
+
+            The examined group comprised kernels belonging to three different varieties of wheat: Kama, Rosa and
+            Canadian,
+            70 elements each, randomly selected for
+            the experiment. High quality visualization of the internal kernel structure was detected using a soft X-ray
+            technique. It is non-destructive and considerably cheaper than other more sophisticated imaging techniques
+            like
+            scanning microscopy or laser technology. The images were recorded on 13x18 cm X-ray KODAK plates. Studies
+            were
+            conducted using combine harvested wheat grain originating from experimental
+            fields, explored at the Institute of Agrophysics of the Polish Academy of Sciences in Lublin.
+        </p>
+        <p>
+            &emsp;The target variable contains 3 classes such as 1,2,3 with types of wheat kernals Kama,Rosa
+            and Canadian. These wheat kernals are classified based upon there physical
+            properties such as Area,Perimeter,compacteness and lenght or width of the kernals. Each type of kernals have
+            70 instances in the target variable, we have a balanced class distribution.
+        </p>
+        <blockquote>Attribute Information:</blockquote>
+        <ol>
+            <li>Area,</li>
+            <li>Perimeter ,</li>
+            <li>Compactness ,</li>
+            <li>Length of kernel,</li>
+            <li>Width of kernel,</li>
+            <li>Asymmetry coefficient</li>
+            <li>Length of kernel groove.</li>
+        </ol>
+
+    </div>
+    <div id="woverall">
+        <h2>Application Flow</h2>
+        <img width="100%" src="{{ url_for('static', filename='images/appflow.jpg') }}">
+    </div>
+    <hr>
+    <div id="sbeda">
+        <h2>Stats Based EDA</h2>
+        <small>Notebook available at : <a
+                href="https://github.com/KunalDuran/api_for_ineuron/blob/finalizing/WheatKernelClassification.ipynb">GitHub</a>
+        </small>
+        <br>
+        <p>Desctiption of all the variables
+        </p>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>area</th>
+                        <th>perimeter</th>
+                        <th>compactness</th>
+                        <th>length_of_kernel</th>
+                        <th>width_of_kernel</th>
+                        <th>asymmetry_coefficient</th>
+                        <th>length_of_kerner_groove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>count</th>
+                        <td>210.000000</td>
+                        <td>210.000000</td>
+                        <td>210.000000</td>
+                        <td>210.000000</td>
+                        <td>210.000000</td>
+                        <td>210.000000</td>
+                        <td>210.000000</td>
+                    </tr>
+                    <tr>
+                        <th>mean</th>
+                        <td>14.847524</td>
+                        <td>14.559286</td>
+                        <td>0.870999</td>
+                        <td>5.628533</td>
+                        <td>3.258605</td>
+                        <td>3.700201</td>
+                        <td>5.408071</td>
+                    </tr>
+                    <tr>
+                        <th>std</th>
+                        <td>2.909699</td>
+                        <td>1.305959</td>
+                        <td>0.023629</td>
+                        <td>0.443063</td>
+                        <td>0.377714</td>
+                        <td>1.503557</td>
+                        <td>0.491480</td>
+                    </tr>
+                    <tr>
+                        <th>min</th>
+                        <td>10.590000</td>
+                        <td>12.410000</td>
+                        <td>0.808100</td>
+                        <td>4.899000</td>
+                        <td>2.630000</td>
+                        <td>0.765100</td>
+                        <td>4.519000</td>
+                    </tr>
+                    <tr>
+                        <th>25%</th>
+                        <td>12.270000</td>
+                        <td>13.450000</td>
+                        <td>0.856900</td>
+                        <td>5.262250</td>
+                        <td>2.944000</td>
+                        <td>2.561500</td>
+                        <td>5.045000</td>
+                    </tr>
+                    <tr>
+                        <th>50%</th>
+                        <td>14.355000</td>
+                        <td>14.320000</td>
+                        <td>0.873450</td>
+                        <td>5.523500</td>
+                        <td>3.237000</td>
+                        <td>3.599000</td>
+                        <td>5.223000</td>
+                    </tr>
+                    <tr>
+                        <th>75%</th>
+                        <td>17.305000</td>
+                        <td>15.715000</td>
+                        <td>0.887775</td>
+                        <td>5.979750</td>
+                        <td>3.561750</td>
+                        <td>4.768750</td>
+                        <td>5.877000</td>
+                    </tr>
+                    <tr>
+                        <th>max</th>
+                        <td>21.180000</td>
+                        <td>17.250000</td>
+                        <td>0.918300</td>
+                        <td>6.675000</td>
+                        <td>4.033000</td>
+                        <td>8.456000</td>
+                        <td>6.550000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive mt-5">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>vif</th>
+                        <th>Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>0</th>
+                        <td>701.552168</td>
+                        <td>area
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td>599.288476</td>
+                        <td>perimeter</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>18.608805</td>
+                        <td>compactness</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>49.187410</td>
+                        <td>length_of_kernel</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>106.863012</td>
+                        <td>width_of_kernel
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td>1.397680</td>
+                        <td>asymmetry_coefficient</td>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <td>12.146534</td>
+                        <td>length_of_kerner_groove</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <div id="gbed">
+        <h3>Graph Based EDA</h3>
+        <ul>
+            <li>We can observe from below visual that most of our independent variables are collinear to each other.
+            </li>
+            <li>Lower collinear variables are mentioned below.</li>
+            <li>Assymetry co-efficient collinearity ranging from -0.0 to -0.3</li>
+            <li>Compactness collinearity ranging from -0.3 to 0.6</li>
+            <li>We found two outliers in the asymmetry coeffient, due to high correlation we ar not going to treat the
+                outliers as we are using tree based algorithms for prediction</li>
+
+        </ul>
+        <div class="row">
+            <img width="100%" height="100%" src="{{ url_for('static', filename='images/heatmap.jpeg') }}"
+                alt="correlation heatmap" />
+        </div>
+        <label>Fig 1 - Correlation Map</label>
+        <div class="row mt-4">
+            <img width="100%" height="100%" src="{{ url_for('static', filename='images/pairplot.png') }}"
+                alt="pairplot" />
+        </div>
+        <label>Fig 2 - Pairplot</label>
+    </div>
+    <hr>
+    <div id="mselection">
+        <h2>Model Selection</h2>
+        <p>
+            We tried 5 Different Algorithms:
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-sm">
+                <tr>
+                    <th></th>
+                    <th>Accuracy</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1 Score</th>
+                </tr>
+                <tr>
+                    <th>SVM</th>
+                    <td>90</td>
+                    <td>90</td>
+                    <td>90</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <th>Logistic Regression</th>
+                    <td>92</td>
+                    <td>92</td>
+                    <td>92</td>
+                    <td>92</td>
+                </tr>
+                <tr>
+                    <th>Decision Tree</th>
+                    <td>89</td>
+                    <td>89</td>
+                    <td>89</td>
+                    <td>89</td>
+                </tr>
+                <tr>
+                    <th>Random Forest</th>
+                    <td>90</td>
+                    <td>90</td>
+                    <td>90</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <th>XGBoost</th>
+                    <td>92</td>
+                    <td>92</td>
+                    <td>92</td>
+                    <td>92</td>
+                </tr>
+            </table>
+        </div>
+        </p>
+    </div>
+    <hr>
+    <div id="mtoptimization" class="container">
+        <h3>Model Tuning and Optimization</h3>
+        <p>
+        <h6>PCA</h6>
+        We tried to implement PCA on the features. Transforming 7 variables into 3,4 variables
+        didn't improved the performance on any metrics so we dropped the idea of going forward with
+        that Strategy. So, we tried.. Cross validation.
+        </p>
+        <strong>Searching for Best Paramerters with 5-fold cross validation</strong>
+        <div class="row mt-4">
+            <div class="col">
+                <h5>Support Vector Classifier</h5>
+                <ul>
+                    <li>'C': 1</li>
+                    <li>'gamma': 'auto'</li>
+                    <li>'kernel': 'linear'</li>
+                </ul>
+                Score: 0.91
+            </div>
+            <div class="col">
+                <h5>Decision Tree</h5>
+                <ul>
+                    <li>'criterion': 'gini'</li>
+                    <li>'splitter': 'best'</li>
+                </ul>
+                Score: 0.86
+            </div>
+            <!-- <div class="col">
+                <h5>Logistic Regression</h5>
+                <ul>
+                    <li>penalty': 'l2'</li>
+                </ul>
+                Score: 0.9
+            </div> -->
+            <div class="col">
+                <h5>XGBoost</h5>
+                <ul>
+                    <li>loss: Deviance</li>
+                    <li>n_estimators: 100</li>
+                </ul>
+                Score: 0.93
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- <div id="ppipeline">
+        <h3>Prediction Pipeline </h3>
+    </div> -->
+    <div id="escenarios">
+        <h2>Exception Scenarios</h2>
+        <p>
+            <b>
+                => All the Useful Error Messages are Displayed with the help of Flashes.<br>
+                &nbsp; &nbsp;&nbsp; User will get appropriate information where the problem is.
+            </b>
+        <h6><i># User can only upload file with given extension(csv, txt, json, xlsx)</i></h6>
+        <h6><i># User input is converted to floats if entered as string</i></h6>
+        <h6><i># DataRequired Validator to ensure a file is uploaded when user clicks the upload button</i></h6>
+        <h6><i># try except blocks to catch any exceptions in user input and returning the error with help of
+                flashes</i></h6>
+        <h6><i># Giving user option to remove target variable while Multiple Sample Classification</i></h6>
+        </p>
+    </div>
+    <hr>
+    <div id="dstrategy">
+        <h3>Deployment Strategy</h3>
+        <h5><u>Google Cloud Platform</u></h5>
+        <p>
+            THE APP IS DEPLOYED ON GOOGLE CLOUD APP ENGINE.<br>
+            THE FILES THAT USER UPLOADS IS STORED IN GOOGLE CLOUD STORAGE BUCKETS.<br>
+            AVAILABLE AT:
+
+            <a href="https://ineuroninternship.el.r.appspot.com/">Seeds Classification</a>
+
+        </p>
+        <h5><u>Docker</u></h5>
+        <p>
+            UBUNTU IMAGE IS CREATED AND UPLOADED ON DOCKERHUB <br>
+            AVAILABLE AT: <a href="https://hub.docker.com/repository/docker/kunalduran/ineuron_internship">DOCKERHUB</a>
+        </p>
+    </div>
+</div>
+<small>Code for this API is available at <a href="https://github.com/KunalDuran/api_for_ineuron">GitHub</a></small>
+{% endblock content %}

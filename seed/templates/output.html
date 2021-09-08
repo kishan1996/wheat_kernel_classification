@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+	html,
+	body {
+		height: 100%;
+	}
+</style>
+<h1>Predicted Classes are : </h1>
+<div style="">
+	{% for  pred in predictions %}
+	Example {{ loop.index}} is from class : <i><b>{{ pred }}</b></i> <br>
+	{% endfor %}
+</div>
+{% endblock content %}

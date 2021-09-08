@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Single Sample Classification-->
+
+<section id="single" class="m-5">
+    <h1>Classify single Sample</h1>
+    <p><i><u style="font-size: 19px;">Enter Values </u></i>
+        <!-- <p>Enter single array of values <i><u>(Comma separated)</u></i> e.g, -->
+        e.g, 15.26, 14.84, 0.8710, 5.763, 3.312, 2.221, 5.220 <br></p>
+    <!-- For following Variables In <b><i><u style="font-size: 19px;">Same Order</u></i></b></p> -->
+    <form method="POST" enctype="multipart/form-data">
+        <table class="table table-sm table-bordered table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Area</th>
+                    <th>Perimeter</th>
+                    <th>Compactness</th>
+                    <th>Length of Kernel</th>
+                    <th>Width of Kernel</th>
+                    <th>Asymmetry coefficient</th>
+                    <th>Length of kernel groove</th>
+                </tr>
+            </thead>
+            <tr>
+                <td><input class="form-control" type="text" name="area" placeholder="Enter Value"></td>
+                <td><input class="form-control" type="text" name="perimeter" placeholder="Enter Value"></td>
+                <td><input class="form-control" type="text" name="compactness" placeholder="Enter value"></td>
+                <td><input class="form-control" type="text" name="length" placeholder="Enter Value"></td>
+                <td><input class="form-control" type="text" name="width" placeholder="Enter Value"></td>
+                <td><input class="form-control" type="text" name="asymmetry" placeholder="Enter Value"></td>
+                <td><input class="form-control" type="text" name="groove" placeholder="Enter Value"></td>
+            </tr>
+        </table>
+        <!-- <input class="form-control mb-3" style="width:300px;" type="text" name="name" placeholder="Enter Values"> -->
+        <select id="mlmodels" name="model" style="width:300px; " class="custom-select">
+            <!-- <option value="RF">Random Forest</option> -->
+            <option value="DT">Decision Tree</option>
+            <option value="XGB">XGBoost</option>
+        </select>
+        <button class="btn btn-dark ml-2" type="submit" href="/">Classify</button>
+    </form>
+</section>
+<br><br><br>
+<hr>
+
+
+<!-- Multiple Sample Classification-->
+
+<section id="multiple" class=" m-5">
+    <h1>Classify Multiple Sample</h1>
+    <div style="padding:10px;">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Upload Test file (Format: csv, txt, xlsx, json)</legend>
+                <div class="form-group">
+                    {{ form.dataset.label() }}
+                    {{ form.dataset(class="form-control-file") }}
+                    {% if form.dataset.errors %}
+                    {% for error in form.dataset.errors %}
+                    <span class="text-danger">{{ error }}</span></br>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-dark") }}
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}
